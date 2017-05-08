@@ -1,0 +1,153 @@
+privacy-flag {
+  position: absolute;
+  z-index: 10;
+  left: 28px;
+  top: 220px;
+  width: 320px;
+  height: 12px;
+  .panel-group .panel + .panel {
+    margin-top: 0px;
+  }
+  .panel {
+    border: 0px solid transparent;
+  }
+  .panel-group .panel-heading + .panel-collapse > .panel-body, .panel-group .panel-heading + .panel-collapse > .list-group {
+    border-top: 0px solid #ddd;
+  }
+  .panelOpen {
+    color: $bright-green;
+  }
+  .panelClose {
+    close: #FFFFFF;
+  }
+  .panel-title {
+    color: #FFFFFF;
+    font-size: 13px;
+    font-family: 'Roboto', 'Helvetica Neue';
+    padding-left: 6px;
+    a {
+      padding-left: 7px;
+    }
+    i {
+      position: relative;
+      top: 0px;
+      padding-right: 10px;
+    }
+  }
+  .panel-title:hover {
+    background-color: #082a3a;
+    color: $bright-green;
+  }
+  .privacyDetail {
+    background-color: #276582;
+    width: 360px;
+    position: relative;
+    left: -15px;
+  }
+  ul:nth-child(1) {
+    background-color: $blue-black;
+    position: relative;
+    top: -15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    li {
+      color: #ffffff;
+    }
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0px;
+    width: 360px;
+    h5 {
+      color: #ffffff;
+      display: block;
+      padding-left: 30px;
+    }
+    li {
+      line-height: 22px;
+      color: #ffffff;
+      font-size: 12px;
+      display: table;
+      padding-left: 0px;
+      width: 360px;
+      span {
+        float: right;
+        display: inline-table;
+        text-align: left;
+        padding-right: 50px;
+        cursor: pointer;
+        width: 125px;
+      }
+      label {
+        padding-left: 30px;
+        display: inline-table;
+        cursor: pointer;
+      }
+      label:after {
+        content: ':';
+        padding-left: 1.5px;
+      }
+
+    }
+  }
+}
+
+.panel-title > a {
+  color: inherit;
+  cursor: pointer;
+}
+
+.hippaPrivacy {
+  border-style: solid;
+  border-color: gray;
+  cursor: pointer;
+  background-color: #ffffff;
+  box-shadow: 0 1px 1px 1px #cecece;
+  border: 2px;
+  label {
+    padding-left: 5px;
+    font-weight: bold;
+    padding-top: 4px;
+    cursor: pointer;
+  }
+  i:nth-child(1) {
+    float: left;
+    font-size: 14px;
+    position: relative;
+    top: 3px;
+  }
+  i {
+    color: #ff6600;
+    padding-left: 7px;
+    float: right;
+    padding-top: 5px;
+  }
+}
+
+.privacyDrawer {
+  position: absolute;
+  z-index: 10;
+  background: #2e7799;
+  width: 360px;
+  border-radius: 4px;
+  height: 0px;
+
+  .panel-title a {
+    display: block;
+    padding: 10px 15px;
+  }
+
+  .panel-heading {
+    background-color: $blue-dark;
+    cursor: pointer;
+    padding: 0px;
+  }
+  .panel-body {
+    background-color: #276582;
+  }
+}
+
+.privacy-call-icon {
+  font-size: 10px;
+}

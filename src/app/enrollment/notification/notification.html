@@ -1,0 +1,35 @@
+<div ng-controller="NotificationController as notification">
+  <div class="material-icons mdl-badge unclick-notif"
+       ng-click='notification.toggle();notification.hideEnrollment($event);' id="notif"
+       data-badge="{{notification.unreadCount}}" ng-class="{clickNotif : notification.isVisible === true}">notifications
+  </div>
+  <!-- <div class="material-icons mdl-badge click-notif" ng-show="notification.isVisible" ng-click='notification.toggleSearch();$event.stopPropagation();' id="notif" data-badge="{{notification.unreadCount}}">notifications</div> -->
+
+  <div class="mdl-layout__drawer-right" ng-click='$event.stopPropagation();' ng-class="panel"
+       ng-show="notification.isVisible" style="display:block;-ms-overflow-y: scroll;overflow-y: auto;">
+
+    <h3 class="mdl-layout-title notification-header">Alerts & Notifications</h3>
+
+    <span class="notification-no-content mdl-layout-notification-title"
+          ng-show="notification.notificationData.totalAlertCount == 0">
+      <!-- <i class="material-icons no-content-icon">info outline</i> -->
+      <span>{{notification.currentMemberFirstName | camelCase}} does not have any notifications.</span>
+    </span>
+
+
+    <ul class="demo-list-item mdl-list messsages" ng-repeat="alert in notification.notificationData.alert"
+        ng-hide="notification.notificationData.totalAlertCount == 0">
+      <li class="mdl-list__item message" ng-class="{'read-message':alert.status != 'UNREAD'}">
+        <div class="mdl-layout-notification-title" ng-class="{'read-message-title':alert.status == 'READ'}">
+          {{alert.headline}}
+        </div>
+        <div class="mdl-layout-notification-content">{{alert.message}}</div>
+
+        <i class="material-icons link-icon-verify-address" ng-hide="alert.urlLinkText == 'N/A'">insert_link</i>
+        <span class="mdl-layout-notification-content link-verify-address" ng-hide="alert.urlLinkText == 'N/A'">{{alert.urlLinkText}}</span>
+        <span class="date pull-right unread-date">{{alert.timestamp | date : "MM.dd.y"}}</span>
+        <br>
+      </li>
+    </ul>
+  </div>
+</div>

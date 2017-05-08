@@ -1,0 +1,45 @@
+{
+  "contractID": "R57709076",
+  "enrollmentOptions": [
+    {
+      "effectiveDate": "2016-10-03T00:00:00.000-0400",
+      "enrollmentCode": "104",
+      "employeeStatus": "7",
+      "lastProcDate": "2014-01-03T00:00:00.000-0500",
+      "prevGainCarrier": "   ",
+      "eventCode": "99",
+      "transactionCode": "80",
+      "enrollmentStatus": "Future"
+    },
+    {
+      "effectiveDate": "2013-11-04T00:00:00.000-0500",
+      "enrollmentCode": "104",
+      "employeeStatus": "7",
+      "lastProcDate": "2014-01-03T00:00:00.000-0500",
+      "prevGainCarrier": "   ",
+      "eventCode": "4A",
+      "transactionCode": "50",
+      "enrollmentStatus": "Current"
+    },
+    {
+      "effectiveDate": "2010-12-31T00:00:00.000-0500",
+      "enrollmentCode": "111",
+      "employeeStatus": "7",
+      "lastProcDate": "2011-01-17T00:00:00.000-0500",
+      "prevGainCarrier": "   ",
+      "eventCode": "99",
+      "transactionCode": "90",
+      "enrollmentStatus": "Previous"
+    },
+    {
+      "effectiveDate": "2009-11-04T00:00:00.000-0500",
+      "enrollmentCode": "111",
+      "employeeStatus": "7",
+      "lastProcDate": "2009-12-21T00:00:00.000-0500",
+      "prevGainCarrier": "   ",
+      "eventCode": "4A",
+      "transactionCode": "11",
+      "enrollmentStatus": "Previous"
+    }
+  ]
+}

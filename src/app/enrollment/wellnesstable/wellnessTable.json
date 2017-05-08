@@ -1,0 +1,133 @@
+{
+  "memberId": 13947027,
+  "memberWellnessPrograms": [
+    {
+      "certificateId": "         ",
+      "wellnessPgmCd": "07",
+      "wellEnrlEffDt": "2016-01-01T05:00:00.000+0000",
+      "wellEnrlTermDt": "2016-12-31T05:00:00.000+0000",
+      "fepocEnrlReqDt": "2016-01-01T05:00:00.000+0000",
+      "fepocLastUpdtDt": "2015-01-01T05:00:00.000+0000",
+      "mbrBhaSubmitDt": "2016-01-01T05:00:00.000+0000",
+      "wellPgmBnftCnt": 0,
+      "wellPgmLevelCd": "M",
+      "wellPgmTxt": "Blue Health Assessment Program (BHA)",
+      "memberWellnessActivity": [
+        {
+          "wellnessPgmCd": "07",
+          "wellActDescTxt": "General Health Assessment",
+          "wellActComplDt": "2014-02-20T05:00:00.000+0000",
+          "wellActClaimId": "              ",
+          "fepocLastUpdDt": "2014-02-22T05:00:00.000+0000"
+        },
+        {
+          "wellnessPgmCd": "07",
+          "wellActDescTxt": "HEART DISEASE",
+          "wellActComplDt": "2016-02-01T05:00:00.000+0000",
+          "wellActClaimId": "CLAIMBHA000001",
+          "fepocLastUpdDt": "2015-01-01T05:00:00.000+0000"
+        },
+        {
+          "wellnessPgmCd": "07",
+          "wellActDescTxt": "HEART FAILURE",
+          "wellActComplDt": "2016-02-02T05:00:00.000+0000",
+          "wellActClaimId": "CLAIMBHA000001",
+          "fepocLastUpdDt": "2015-01-01T05:00:00.000+0000"
+        }
+      ]
+    },
+    {
+      "certificateId": "         ",
+      "wellnessPgmCd": "12",
+      "wellEnrlEffDt": "2016-01-01T05:00:00.000+0000",
+      "wellEnrlTermDt": "2016-12-31T05:00:00.000+0000",
+      "fepocEnrlReqDt": "2015-11-12T05:00:00.000+0000",
+      "fepocLastUpdtDt": "2015-01-01T05:00:00.000+0000",
+      "mbrBhaSubmitDt": "0001-01-03T05:00:00.000+0000",
+      "wellPgmBnftCnt": 0,
+      "wellPgmLevelCd": "M",
+      "wellPgmTxt": "BLOOD PRESSURE MONITORS PROGRAM"
+    },
+    {
+      "certificateId": "         ",
+      "wellnessPgmCd": "20",
+      "wellEnrlEffDt": "2016-01-01T05:00:00.000+0000",
+      "wellEnrlTermDt": "2016-12-31T05:00:00.000+0000",
+      "fepocEnrlReqDt": "2015-12-01T05:00:00.000+0000",
+      "fepocLastUpdtDt": "2015-01-01T05:00:00.000+0000",
+      "mbrBhaSubmitDt": "2015-12-01T05:00:00.000+0000",
+      "wellPgmAwardAmt": 75,
+      "wellPgmBnftCnt": 0,
+      "wellPgmLevelCd": "M",
+      "wellPgmTxt": "INCENTIVE PROGRAM FOR PREGNANCY",
+      "memberWellnessActivity": [
+        {
+          "wellnessPgmCd": "20",
+          "wellActDescTxt": "PREGNANCY BOX",
+          "wellActComplDt": "2016-01-01T05:00:00.000+0000",
+          "wellActClaimId": "CLAIMPREG00001",
+          "fepocLastUpdDt": "2015-01-01T05:00:00.000+0000"
+        },
+        {
+          "wellnessPgmCd": "20",
+          "wellActDescTxt": "PREGNANCY INCENTIVE",
+          "wellActComplDt": "2016-02-01T05:00:00.000+0000",
+          "wellActClaimId": "CLAIMPREG00001",
+          "fepocLastUpdDt": "2015-01-01T05:00:00.000+0000"
+        }
+      ]
+    },
+    {
+      "certificateId": "         ",
+      "wellnessPgmCd": "07",
+      "wellEnrlEffDt": "2016-01-01T05:00:00.000+0000",
+      "wellEnrlTermDt": "2016-12-31T05:00:00.000+0000",
+      "fepocEnrlReqDt": "2016-01-01T05:00:00.000+0000",
+      "fepocLastUpdtDt": "2015-01-01T05:00:00.000+0000",
+      "mbrBhaSubmitDt": "2016-01-01T05:00:00.000+0000",
+      "wellPgmBnftCnt": 0,
+      "wellPgmLevelCd": "M",
+      "wellPgmTxt": "Blue Health Assessment Program (BHA)",
+      "memberWellnessActivity": [
+        {
+          "wellnessPgmCd": "07",
+          "wellActDescTxt": "General Health Assessment",
+          "wellActComplDt": "2014-02-20T05:00:00.000+0000",
+          "wellActClaimId": "              ",
+          "fepocLastUpdDt": "2014-02-22T05:00:00.000+0000"
+        },
+        {
+          "wellnessPgmCd": "07",
+          "wellActDescTxt": "HEART DISEASE",
+          "wellActComplDt": "2016-02-01T05:00:00.000+0000",
+          "wellActClaimId": "CLAIMBHA000001",
+          "fepocLastUpdDt": "2015-01-01T05:00:00.000+0000"
+        },
+        {
+          "wellnessPgmCd": "07",
+          "wellActDescTxt": "HEART FAILURE",
+          "wellActComplDt": "2016-02-02T05:00:00.000+0000",
+          "wellActClaimId": "CLAIMBHA000001",
+          "fepocLastUpdDt": "2015-01-01T05:00:00.000+0000"
+        }
+      ]
+    },
+    {
+      "certificateId": "         ",
+      "wellnessPgmCd": "07",
+      "wellEnrlEffDt": "2016-01-01T05:00:00.000+0000",
+      "wellEnrlTermDt": "2016-12-31T05:00:00.000+0000",
+      "fepocEnrlReqDt": "2016-01-01T05:00:00.000+0000",
+      "fepocLastUpdtDt": "2015-01-01T05:00:00.000+0000",
+      "mbrBhaSubmitDt": "2016-01-01T05:00:00.000+0000",
+      "wellPgmBnftCnt": 0,
+      "wellPgmLevelCd": "M",
+      "wellPgmTxt": "Blue Health Assessment Program (BHA)",
+      "memberWellnessActivity": [
+      ]
+    }
+  ]
+}
+
+
+

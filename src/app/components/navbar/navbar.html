@@ -1,0 +1,30 @@
+<div class="mdl-layout__header-row member-360-header-padding" ng-controller="NavbarController as navbar">
+  <span class="mdl-layout-title">MEMBER <span class="brand-span">360</span></span>
+  <div class="mdl-layout-spacer"></div>
+  <member-search ng-hide="accessDenied===true"></member-search>
+  <div class="fepmain">
+    <span><a id="mainmenu" href="/fepdirect/MenuOfServices.jsp" target="_blank">MAIN MENU</a></span>
+    <span><a ng-click="logoutDialog()">LOGOUT</a></span>
+  </div>
+  <!--<div class="img-container">
+    <img src="http://developers.fepblue.org/wp-content/uploads/FEP_color-300x95.png">
+  </div>-->
+  <script type="text/ng-template" id="myModalLogout.html">
+    <div class="modal-header">
+      <h5>LOG OUT MEMBER360</h5>
+      <i class="material-icons close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">clear</i>
+    </div>
+    <div class="modal-body">
+      <div class="logout-modal">You will be logged out of Member360 and all FEPDirect application(s) which might be open
+        in other browser windows/tabs. Do you want to continue?
+      </div>
+    </div>
+    <div class="modal-footer">
+      <span class="mdl-button mdl-js-button mdl-js-ripple-effect blue-button"><a href="/pkmslogout"
+                                                                                 class="logout-button blue-button">YES</a></span>
+      <button class="mdl-button mdl-js-button mdl-js-ripple-effect blue-button logout-button" type="button"
+              ng-click="cancel()">CANCEL
+      </button>
+    </div>
+  </script>
+</div>

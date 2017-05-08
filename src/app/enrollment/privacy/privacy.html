@@ -1,0 +1,91 @@
+<div ng-controller="privacyController as privacy">
+  <div class="hippaPrivacy" ng-click='privacy.toggle(); privacy.hideEnrollment($event);'
+       ng-hide="privacy.noPrivacyInfo">
+    <i class="material-icons">lock</i>
+    <label>HIPAA Privacy Flag</label>
+    <i class="material-icons">{{privacy.arrowIcon}}</i>
+  </div>
+  <div class="privacyDrawer" ng-show="privacy.isVisible" ng-click='$event.stopPropagation();'>
+    <uib-accordion>
+      <div uib-accordion-group class="panel-default" is-open="status.open"
+           ng-repeat="privacy in privacy.privacyData.privacyInfo" close-others="true">
+        <uib-accordion-heading>
+          <div ng-class="{'panelOpen': status.open, 'panelClose': !status.open}">
+            {{privacy.privacyType}} <i class="pull-left glyphicon"
+                                       ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+          </div>
+        </uib-accordion-heading>
+        <div class="privacyDetail">
+          <ul>
+            <li>
+              <label>Effective Date</label>
+              <span>
+                          {{privacy.effectiveDate ||'- -'| date: "MM.dd.y" }}
+                        </span>
+            </li>
+            <li>
+              <label>Termination Date</label>
+              <span>
+                          {{privacy.terminationDate ||'- -'| date: "MM.dd.y" }}
+                        </span>
+            </li>
+            <li>
+              <label>Original Date Entered</label>
+              <span>
+                          {{privacy.originalAddedDate ||'- -'| date: "MM.dd.y" }}
+                        </span>
+            </li>
+            <li>
+              <label>Plan Code</label>
+              <span>
+                          {{privacy.planCode ||'- -'}}
+                        </span>
+            </li>
+          </ul>
+          <ul>
+            <h5>Privacy Flag Details</h5>
+            <li
+              ng-show="privacy.privacyType == 'Authorized Person' || privacy.privacyType == 'Personal Representative'">
+              <label>Name</label>
+              <span>
+                          {{privacy.memberRepresentativeFirstName || '- -'}} {{privacy.memberRepresentativeLastName}}
+                        </span>
+            </li>
+            <li ng-hide="privacy.privacyType == 'Agreed to Restriction' || privacy.privacyType == 'Amended PHI'">
+              <label>Address</label>
+              <span class="mdl-list__item-primary-content">
+                          {{privacy.privacyAddress.street1|| '- -' | camelCase}}
+                          {{privacy.privacyAddress.street2 | camelCase}}<br>
+                          {{privacy.privacyAddress.city | camelCase}}
+                          {{privacy.privacyAddress.state}}
+                          {{privacy.privacyAddress.zipCode | zipcode}}<br>
+                          {{privacy.privacyAddress.countryName | camelCase}}
+                        </span>
+            </li>
+
+            <li ng-hide="privacy.privacyType == 'Agreed to Restriction' || privacy.privacyType == 'Amended PHI'">
+              <label>Contact <i class="material-icons privacy-call-icon">call</i></label>
+              <span>
+                          {{privacy.privacyContactDetail != 0 ? privacy.privacyContactDetail : '- -' | tel }}
+                        </span>
+            </li>
+
+            <li ng-show="privacy.privacyType == 'Authorized Person'">
+              <label>Explanation</label>
+              <span>
+                          {{privacy.privacyExplanation || '- -' | camelCase}}
+                        </span>
+            </li>
+
+            <li ng-show="privacy.privacyType == 'Amended PHI' || privacy.privacyType == 'Agreed to Restriction'">
+              <label>Reason</label>
+              <span>
+                          {{privacy.privacyReason || '- -'| camelCase}}
+                        </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </uib-accordion>
+  </div>
+</div>

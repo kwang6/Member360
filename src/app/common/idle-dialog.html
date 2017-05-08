@@ -1,0 +1,19 @@
+<div ng-controller="IdleController as idlecntrlr">
+  <div class="modal-header">
+    <h5>No User Activity Detected</h5>
+  </div>
+  <div idle-countdown="countdown" class="modal-body">
+    <div class="logout-modal">
+      Member360 application has not detected any activity in the last {{idleTime / 60}} minutes. You will be redirected
+      to the FEPDirect main menu page in another {{countdown}} seconds. Do you want to extend your session?
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="mdl-button mdl-js-button mdl-js-ripple-effect blue-button logout-button" type="button"
+            ng-click="extendSession()">Yes
+    </button>
+    <button class="mdl-button mdl-js-button mdl-js-ripple-effect blue-button logout-button" type="button"
+            ng-click="endSession()">No
+    </button>
+  </div>
+</div>

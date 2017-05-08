@@ -1,0 +1,41 @@
+<div ng-controller="WellnesscardController as wellnesscard">
+  <div>
+    <div>
+      <i class="material-icons credit-card-icon" ng-click="wellnesscard.toggle();">credit_card</i>
+    </div>
+    <div class="card-header mdl-grid">
+      <div class="mdl-cell mdl-cell--12-col change-line">
+        <span>MEMBER</span>
+      </div>
+      <div class="mdl-cell mdl-cell--12-col change-line">
+        <span>WELLNESS CARD</span>
+      </div>
+      <!-- <span class="pull-right change-line">MEMBER</span>
+        <span class="pull-right change-line">WELLNESS CARD</span> -->
+    </div>
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--12-col card-number">
+		                        <span class="pull-right card-number-detail">
+		                          XXXX&nbsp;&nbsp;&nbsp;&nbsp;XXXX&nbsp;&nbsp;&nbsp;&nbsp;XXXX&nbsp;&nbsp;&nbsp;&nbsp;XXXX
+		                        </span>
+      </div>
+    </div>
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--12-col">
+        <span class="wellness-card-balance">Wellness Card Balance:</span>
+      </div>
+      <div class="mdl-cell mdl-cell--12-col">
+        <span ng-hide="wellnesscard.noWellnessAccount" class="wellness-card-balance-number">${{wellnesscard.WellnessCardData.incentiveBalance | number: 2}}</span>
+        <span ng-show="wellnesscard.noWellnessAccount" class="wellness-card-no-account">{{wellnesscard.currentMemberFirstName | camelCase}} does not have a wellness account.</span>
+      </div>
+    </div>
+    <!-- <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col">
+          <span class="pull-right wellness-card-date">The card number is as of:</span>
+        </div>
+        <div class="mdl-cell mdl-cell--12-col">
+          <span class="pull-right welness-card-date-number">3:30PM EST | 10.10.2016</span>
+        </div>
+    </div> -->
+  </div>
+</div>

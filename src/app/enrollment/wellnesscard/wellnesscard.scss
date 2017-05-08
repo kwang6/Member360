@@ -1,0 +1,78 @@
+.wellness-card {
+  background-color: #256989;
+  //border-left: 1px solid black;
+  box-shadow: 0 8px 10px 2px #cecece;
+  height: 515px;
+  .card-header {
+    font-size: 22px;
+    font-weight: 400;
+    color: #b7e7fe;
+    padding-bottom: 10px;
+    padding-right: 30px;
+	padding-left:5px;
+    .change-line {
+      padding-bottom: 10px;
+    }
+  }
+}
+
+.credit-card-icon {
+  padding: 10px;
+  background-color: #2e7799;
+  color: white;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+}
+
+.card-number {
+  background-color: #082a3a;
+  padding-right: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100% !important;
+  .card-number-detail {
+    padding-right: 10px;
+    color: #9eacb2;
+    font-weight: 100;
+    font-size: 14px;
+  }
+}
+
+.wellness-card-balance {
+  color: #e0eaee;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left:5px;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.wellness-card-balance-number {
+  padding-right: 10px;
+  padding-bottom: 40px;
+  padding-left:5px;
+  font-size: 22px;
+  color: #b7e7fe;
+}
+
+.wellness-card-no-account {
+  padding-left: 20px;
+  padding-bottom: 40px;
+  font-size: 20px;
+  color: #b7e7fe;
+  text-align: right;
+}
+
+.wellness-card-date {
+  padding: 15px;
+  font-size: 14px;
+  font-weight: 300;
+  color: white;
+}
+
+.wellness-card-date-number {
+  padding-right: 15px;
+  padding-bottom: 40px;
+  font-weight: 100;
+  color: #75b5d3;
+}

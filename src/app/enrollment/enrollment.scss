@@ -1,0 +1,367 @@
+/**
+ * Enrollment View SCSS styles
+ * Author: John V. Runion, Kai Wang, Audrey Zhang
+ */
+.mdl-grid {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  .mdl-cell {
+    margin: 0;
+    &.events {
+      overflow: scroll;
+    }
+    &.roster-wrapper {
+      width: 100%;
+    }
+    &.contact {
+      border-right: 1px solid #cecece;
+      box-shadow: 0 8px 10px 2px #cecece;
+      max-height: 700px;
+      height: 500px;
+    }
+    .summary {
+      padding: 10px 0 0 30px;
+      color: #000;
+      font-weight: 400;
+      font-size: 18px;
+    }
+    ul {
+      padding: 20px 0 10px 30px;
+      margin: 0;
+      &.details {
+        padding-top: 10px;
+      }
+      &.member {
+        padding-top: 10px;
+      }
+      &.primary {
+        padding-top: 10px;
+      }
+      &.alternate {
+        padding-top: 10px;
+      }
+      li {
+        border-bottom: $data-bottom;
+        padding: $data-padding;
+        width: $data-width;
+        label {
+          min-width: 57%;
+          &:after {
+            content: ':';
+            padding-left: 1.5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.member-roster {
+  padding: 0;
+  margin: 0;
+  top: -20px;
+  position: relative;
+  .mdl-data-table {
+    border-radius: 0;
+    table-layout: fixed;
+    width: 98%;
+    thead {
+      display: block;
+      width: 98%;
+      tr {
+        width: 100%;
+        th {
+          font-size: 13px;
+          font-weight: 400;
+          color: #000;
+          height: 53px;
+          width: 16%;
+          text-align: center;
+          padding-bottom: 12px;
+        }
+      }
+    }
+    tbody {
+      display: block;
+      //float: left;
+      max-height: 289px;
+      overflow-y: scroll;
+      width: 99%;
+      tr {
+        width: 100%;
+        td {
+          color: $mid-grey;
+          width: 15%;
+          font-weight: 300;
+          background-color: rgba(128, 84, 0, 0.08);
+          padding-top: 15px;
+          text-align: center;
+          span {
+            position: relative;
+            top: -10px;
+          }
+          i {
+            color: $bright-green;
+            padding-left: 30px;
+            position: relative;
+            top: -3px;
+          }
+          .red-lock {
+            font-size: large;
+            color: $dark-red;
+          }
+          .blue {
+            color: $sky-blue;
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        &:hover {
+          background-color: #33374B;
+          color: $bright-green;
+          td {
+            color: $bright-green;
+            font-weight: 400;
+          }
+        }
+        td {
+          color: $mid-grey;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+  .width-adjust9 {
+    width: 9% !important;
+  }
+  .width-adjust5 {
+    width: 5% !important;
+  }
+  .width-adjust15 {
+    width: 15% !important;
+  }
+  .width-adjust16 {
+    width: 16% !important;
+  }
+  .width-adjust10 {
+    width: 8% !important;
+  }
+  .width-adjust17 {
+    width: 17% !important;
+  }
+}
+
+.isEffective {
+  color: $dark-green !important;
+}
+
+.is-privacy-right {
+  margin-right: 40px;
+}
+
+.is-privacy-left {
+  padding-left: 16px;
+  font-weight: bold;
+}
+
+.wellness-card-toggle {
+  position: absolute;
+  right: 1.9%;
+  top: 53px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 0 !important;
+  box-shadow: 0 1px 1px 1px #cecece;
+}
+
+.myblue {
+  background-color: #329cce;
+  border-style: none;
+  border-radius: 2px;
+  color: #FFFFFF !important;
+  padding: 4px 8px 5px;
+  position: relative;
+  top: 3px;
+  i {
+    position: relative;
+    font-size: 13px;
+    padding-left: 5px;
+    top: 2px;
+  }
+}
+
+.myblueNotRegisted {
+  background-color: #ff6717;
+}
+
+.text-color-orange {
+  color: #ff6717;
+}
+
+.is-alternate-dates {
+  font-weight: bold !important;
+}
+
+.tooltip-panel {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+
+  .tooltip-li {
+    label {
+      min-width: 45% !important;
+    }
+    span {
+      color: #FFFFFF;
+    }
+  }
+  .planName {
+    display: table;
+    label {
+      display: inline-table;
+    }
+    span {
+      display: inline-table;
+      width: 50%;
+      position: relative;
+      left: 0px;
+    }
+  }
+}
+
+.FSA-label {
+  font-weight: 400;
+  min-width: 57%;
+  display: inline-block;
+}
+
+.FSA-button {
+  color: white !important;
+  display: inline;
+  font-size: 13px;
+  padding: 4px;
+  border-radius: 2px;
+  padding-right: 15px;
+  cursor: pointer;
+  position: relative;
+  top: -1px;
+  i {
+    font-size: 17px;
+    position: relative;
+    top: 5px;
+  }
+}
+
+.FSA-notenrolled {
+  display: inline !important;
+}
+
+.FSA-history-zoomin {
+  font-size: 14px;
+  margin-left: 10px;
+  margin-right: 5px;
+  top: 2px;
+  position: relative;
+}
+
+.center-modal {
+  position: fixed;
+  top: 30%;
+  left: 20%;
+  z-index: 1050;
+  width: 80%;
+  height: 80%;
+  margin-left: -10%;
+}
+
+.modal-content {
+  border-radius: 0;
+}
+
+.modal-footer {
+  border-top: 0;
+}
+
+.modal-header {
+  border-bottom: 0;
+  background-color: #314361;
+  h5 {
+    display: inline-block;
+    color: $sky-blue;
+  }
+}
+
+.modal-body {
+  top: 10px;
+  padding: 0;
+}
+
+.blue-button {
+  color: #329cce;
+}
+
+.close {
+  color: #f77b11 !important;
+  opacity: 1 !important;
+  margin-top: 7px !important;
+  text-shadow: none !important;
+}
+
+.FSA-table {
+  .FSA-th {
+    .table-row {
+      .mdl-cell--4-col {
+        width: calc(33.3333333333%);
+        font-weight: 200px;
+        font-size: 12px;
+      }
+      .mdl-cell {
+        text-align: center;;
+        font-size: 14px;
+        padding-bottom: 7px;
+        padding-top: 7px;
+      }
+    }
+  }
+  .FSA-tb {
+    .table-row {
+      .mdl-cell--4-col {
+        width: calc(33.3333333333%);
+        font-weight: 200px;
+        font-size: 12px;
+      }
+      .mdl-cell {
+        text-align: center;
+        font-size: 12px;
+        padding-bottom: 7px;
+        padding-top: 7px;
+      }
+    }
+  }
+}
+
+.font-bold {
+  font-weight: bold;
+  color: $sky-blue;
+  background-color: #def1ff;
+}
+
+.emailSpecial {
+  display: inline-flex;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+#enrollment_termination_date {
+	label {
+		color: #ff6717;
+	}
+	span {
+		color: #ff6717;
+	}
+}

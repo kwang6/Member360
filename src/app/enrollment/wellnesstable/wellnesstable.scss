@@ -1,0 +1,103 @@
+.wellness-table {
+  .wellness-th {
+    .table-row {
+      padding-right: 1%;
+      .mdl-cell--2-col {
+        width: calc(16.6666666667%);
+        padding-left: 30px;
+        padding-top: 10px;
+      }
+
+      .mdl-cell--3-col {
+        width: calc(25%);
+        padding-top: 10px;
+        .mdl-cell--3-col {
+          width: calc(25%);
+          font-weight: 200px;
+          font-size: 12px;
+          padding-top: 0px;
+        }
+      }
+      .mdl-cell--5-col {
+        width: calc(41.6666666667%);
+        padding-top: 10px;
+        .mdl-cell--6-col {
+          width: calc(50%);
+          font-weight: 200px;
+          font-size: 12px;
+        }
+        .mdl-cell--3-col {
+          width: calc(25%);
+          padding: 0px;
+        }
+      }
+      .mdl-cell {
+        text-align: left;
+        font-size: 13px;
+        font-weight: bold;
+        padding-bottom: 10px;
+        .wellness-table-enrollment-dates {
+        }
+      }
+    }
+  }
+  .wellness-tb {
+    height: 330px;
+    overflow-y: scroll;
+    background-color: #eaeaea;
+    .even-row {
+      background-color: #f0f0f0;
+    }
+    .odd-row {
+      background-color: #eaeaea;
+    }
+    .table-row {
+      .mdl-cell--2-col {
+        width: calc(16.6666666667%);
+        padding-left: 30px;
+        padding-top: 10px;
+      }
+      .mdl-cell--3-col {
+        width: calc(25%);
+        padding-top: 10px;
+        .mdl-cell--3-col {
+          width: calc(25%);
+          font-weight: 200px;
+          font-size: 12px;
+          padding-top: 0px;
+        }
+      }
+      .mdl-cell--5-col {
+        width: calc(41.6666666667%);
+        padding-top: 10px;
+        .mdl-cell--6-col {
+          width: calc(50%);
+          font-weight: 200px;
+          font-size: 12px;
+        }
+        .mdl-cell--3-col {
+          width: calc(25%);
+          padding: 0px;
+        }
+      }
+      .mdl-cell {
+        text-align: left;
+        font-size: 12px;
+        padding-bottom: 10px;
+        .wellness-table-enrollment-dates {
+        }
+      }
+    }
+  }
+  .no-wellnessEvents {
+    top: -300px;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    color: #9A9DA4;
+    font-size: medium;
+  }
+  .wellness-table-enrollment-dates {
+    color: #ff6717;
+  }
+}

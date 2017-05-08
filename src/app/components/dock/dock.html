@@ -1,0 +1,16 @@
+<nav class="mdl-navigation" ng-controller="DockController as dock">
+  <!--<a class="mdl-navigation__link" ng-repeat='item in dock.menuItems' ng-click="dock.setActive(item)" ng-class="{active : activeMenu === item}" ui-sref-active="active" ui-sref="{{item.url}}" ng-hide="accessDenied===true">
+  <i class="material-icons">{{item.icon}}</i>
+  <label>{{item.label}}</label>
+</a>-->
+  <div class="mdl-navigation__link cursor" ng-click="dock.dashboardLink()"
+       ng-class="{active : dock.dashboardLinkActive === true}" ng-hide="accessDenied===true">
+    <i class="material-icons">dashboard</i>
+    <label>Dashboard</label>
+  </div>
+  <div class="mdl-navigation__link cursor" ng-click="dock.enrollmentLink()"
+       ng-class="{active : dock.enrollmentLinkActive === true}" ng-hide="accessDenied===true">
+    <i class="material-icons">assignment_ind</i>
+    <label>Enrollment</label>
+  </div>
+</nav>

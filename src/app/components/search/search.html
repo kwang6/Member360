@@ -1,0 +1,124 @@
+<div class="accordion__container" ng-controller="SearchController as search">
+  <div class="accordion__tab" ng-click='search.hideOthers($event)'>
+    <form action="#">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label search-input">
+        <input ng-class="{ 'mdl-textfield__invalid' : search.validationError}" class="mdl-textfield__input search-label"
+               type="text" ng-model="search.searchContent" ng-click="search.toggle()" focus-me="focusInput"
+               placeholder="{{search.criterion}}" aria-invalid={ {search.validationError}}>
+
+        <!--<input class="mdl-textfield__input search-label" type="text" ng-model="search.searchContent" ng-click="search.toggle()" focus-me="focusInput" placeholder="{{search.criterion}}" ng-keypress="search.keyPressEvent($event)">-->
+        <label class="mdl-textfield__label"></label>
+        <span class="mdl-textfield__validationError" ng-show="search.validationError">The ID you entered is not valid. Please correct your entry.</span>
+        <span class="mdl-textfield__validationError" ng-show="contractNotFound===true">No results found. Please enter a different ID</span>
+        <span class="mdl-textfield__validationError" ng-show="defaultApiError===true">Your action could not be completed due to technical issues. Please try again later.</span>
+        <i class="material-icons search">search</i>
+      </div>
+    </form>
+  </div>
+  <div class="accordion__content mdl-card mdl-shadow--2dp" ng-show="search.isVisible">
+    <div ng-click='$event.stopPropagation();' cursor-default>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select search-default-dropdown">
+        <input class="mdl-textfield__input search-dropdown-color" type="text" id="sample2" value="{{search.criterion}}"
+               readonly tabIndex="-1">
+        <label for="sample2" class="mdl-icon-dropdown">
+          <i class="mdl-icon-toggle__label material-icons search-dropdown-color">keyboard_arrow_down</i>
+        </label>
+        <label for="sample2" class="mdl-textfield__label mdl-textfield-dropdown text-field-underline"></label>
+        <ul for="sample2" class="mdl-menu mdl-menu--bottom-left mdl-js-menu search-dropdown">
+          <li class="mdl-menu__item search-dropdown-menu search-default-dropdown-list"
+              ng-repeat="criteria in search.criteria" ng-model="search.criterion"
+              ng-click="search.dropdownResult(criteria)">{{criteria}}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="button-wrapper" ng-click='$event.stopPropagation();'>
+      <button ng-click="search.submitSearch()" class="mdl-button mdl-js-button mdl-button--raised brand">Search</button>
+      <button ng-click="search.clearSearch(); focusInput=true" class="mdl-button mdl-js-button mdl-button--raised">
+        Cancel
+      </button>
+    </div>
+  </div>
+  <div class="accordion__content mdl-card mdl-shadow--2dp search-SSN-result" ng-show="search.isSearchSSNVisible">
+    <div ng-click='$event.stopPropagation();' class="cursor-default">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select search-expand-dropdown">
+        <!--<h3 class="col-md-3" style="padding:0px;margin:0px;padding-left:10px;">SSN Result List</h3>-->
+        <div class="search-expand-dropdown-list">
+          <input class="mdl-textfield__input search-dropdown-color display-inline" type="text" id="sample3"
+                 value="{{search.criterion}}" readonly tabIndex="-1">
+          <span ng-show="search.multiSSN" class="search-multiple-message">Multiple Contracts were found for SSN {{search.searchSSN}}. Select a Contract ID to view more details.</span>
+          <label for="sample3" class="mdl-icon-dropdown mdl-icon-dropdown-ssn">
+            <i class="mdl-icon-toggle__label material-icons search-dropdown-color">keyboard_arrow_down</i>
+          </label>
+          <label for="sample3"
+                 class="mdl-textfield__label mdl-textfield-dropdown search-ssn-result-underline search-expand-dropdown-list"></label>
+        </div>
+        <ul for="sample3" class="mdl-menu mdl-menu--bottom-left mdl-js-menu search-dropdown">
+          <li class="mdl-menu__item search-dropdown-menu search-expand-dropdown-list-width"
+              ng-repeat="criteria in search.criteria" ng-model="search.criterion"
+              ng-click="search.dropdownResult(criteria)">{{criteria}}
+          </li>
+        </ul>
+        <div class="mdl-grid search-table">
+          <div class="mdl-grid search-th">
+            <div class="mdl-grid table-row">
+              <div class="mdl-cell mdl-cell--1-col">
+                Contract ID
+              </div>
+              <div class="mdl-cell mdl-cell--2-col">
+                First Name
+              </div>
+              <div class="mdl-cell mdl-cell--1-col">
+                Middle Initial
+              </div>
+              <div class="mdl-cell mdl-cell--2-col">
+                Last Name
+              </div>
+              <div class="mdl-cell mdl-cell--2-col">
+                Member Type
+              </div>
+              <div class="mdl-cell mdl-cell--2-col">
+                Relationship
+              </div>
+              <div class="mdl-cell mdl-cell--2-col">
+                Effective Date
+              </div>
+            </div>
+          </div>
+          <div class="mdl-grid search-tb">
+            <div class="mdl-grid table-row" ng-repeat="SSNContractInfo in search.SSNSummary" ng-class-even="'even-row'"
+                 ng-class-odd="'odd-row'">
+              <div class="mdl-cell mdl-cell--1-col">
+                <span class="search-list-contractid-select"
+                      ng-click="search.getSearchResultBySSNList(SSNContractInfo.contractID)">{{SSNContractInfo.contractID | formatContractId}}</span>
+              </div>
+              <div class="mdl-cell mdl-cell--2-col">
+                {{SSNContractInfo.firstName||'- -'}}
+              </div>
+              <div class="mdl-cell mdl-cell--1-col">
+                {{SSNContractInfo.middleName||'- -'}}
+              </div>
+              <div class="mdl-cell mdl-cell--2-col">
+                {{SSNContractInfo.lastName||'- -'}}
+              </div>
+              <div class="mdl-cell mdl-cell--2-col">
+                {{SSNContractInfo.memberType||'- -'|memberTypeDescription}}
+              </div>
+              <div class="mdl-cell mdl-cell--2-col">
+                {{SSNContractInfo.relationship||'- -'|relationshipDescription}}
+              </div>
+              <div class="mdl-cell mdl-cell--2-col">
+                {{SSNContractInfo.memberEnrollmentEffectiveDate||'- -'| date: "MM.dd.y"}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="button-wrapper" ng-click="$event.stopPropagation();">
+      <button ng-click="search.submitSearch()" class="mdl-button mdl-js-button mdl-button--raised brand">Search</button>
+      <button ng-click="search.clearSearchForSSNPanel()" class="mdl-button mdl-js-button mdl-button--raised">Cancel
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<!-- <member-breadcrumb></member-breadcrumb> -->
+<div ng-controller="DashboardController as dashboard">
+  <div class="navigation-scope" ng-controller="BreadcrumbController as breadcrumb">
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet breadcrumb-wrapper">
+        <div class="breadcrumb">{{breadcrumb.breadCrumb}}</div>
+      </div>
+    </div>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <div class="mdl-grid">
+        <div class="dashboard-wrapper">
+          <h1>Welcome to the <span class="member">MEMBER</span><span class="brand-span">360</span> Dashboard
+            <h1>
+              <h2>You are currrently logged in as: <span class="user">{{dashboard.user.firstName}} {{dashboard.user.lastName}}</span><i
+                class="material-icons">account_circle</i></h2>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

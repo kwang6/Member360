@@ -1,0 +1,81 @@
+.acme-navbar-text {
+  color: white;
+}
+
+.member-360-header-padding {
+  padding: 0 0px 0 80px;
+}
+
+.logout-button:focus {
+  color: #ff6600;
+}
+
+.logout-button:hover {
+  color: #ff6600;
+}
+
+.logout-modal {
+  color: #666a72;
+  padding: 15px;
+}
+
+a {
+  color: black;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0;
+  line-height: 1.25em;
+}
+
+a:focus,
+a:hover {
+  color: #fff;
+}
+
+.img-container {
+  width: 12%;
+}
+
+.mdl-layout__header .mdl-layout__drawer-button {
+  position: absolute;
+  color: #fff;
+  background-color: #70ba4a;
+  margin: 0;
+  padding: 0;
+  width: 53px;
+  height: 53px;
+  .material-icons {
+    top: 15px;
+    position: absolute;
+    right: 15px;
+  }
+}
+
+.mdl-layout__header {
+  span {
+    &.brand-span {
+      font-weight: 300;
+      letter-spacing: -1.9px;
+      margin-left: -9px;
+      color: $sky-blue;
+    }
+  }
+  img {
+    zoom: 100%;
+  }
+  .fepmain {
+    span {
+      padding-left: 7px;
+      padding-right: 10px;
+      a {
+        color: #635a5a;
+        cursor: pointer;
+      }
+      a:hover {
+        color: #329cce;
+      }
+    }
+  }
+}

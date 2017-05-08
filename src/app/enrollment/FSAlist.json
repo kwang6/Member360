@@ -1,0 +1,31 @@
+{
+   "contractID": "R50090670",
+   "fsaEligibilityHistory": false,
+   "fsaEligibility":    [
+      {
+         "fsaEffectiveDate": "2016-01-01T00:00:00.000-0500",
+         "fsaTerminationDate": "2016-12-31T00:00:00.000-0500",
+         "fsaCloseOutDate": "2015-12-29T00:00:00.000-0500"
+      },
+      {
+         "fsaEffectiveDate": "2014-01-01T00:00:00.000-0500",
+         "fsaTerminationDate": "2014-12-31T00:00:00.000-0500",
+         "fsaCloseOutDate": "2013-12-29T00:00:00.000-0500"
+      },
+      {
+         "fsaEffectiveDate": "2012-01-01T00:00:00.000-0500",
+         "fsaTerminationDate": "2012-08-01T00:00:00.000-0400",
+         "fsaCloseOutDate": "2012-09-02T00:00:00.000-0400"
+      },
+      {
+         "fsaEffectiveDate": "2012-01-01T00:00:00.000-0500",
+         "fsaTerminationDate": "2012-12-31T00:00:00.000-0500",
+         "fsaCloseOutDate": "2012-01-01T00:00:00.000-0500"
+      },
+      {
+         "fsaEffectiveDate": "2011-01-01T00:00:00.000-0500",
+         "fsaTerminationDate": "2011-12-31T00:00:00.000-0500",
+         "fsaCloseOutDate": "2011-01-02T00:00:00.000-0500"
+      }
+   ]
+}

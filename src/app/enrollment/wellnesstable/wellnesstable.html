@@ -1,0 +1,90 @@
+<div class="mdl-grid wellness-table" ng-controller="WellnesstableController as wellnesstable">
+
+  <div class="mdl-grid wellness-th">
+    <div class="mdl-grid table-row">
+      <div class="mdl-cell mdl-cell--2-col">
+        Program Name
+      </div>
+      <div class="mdl-cell mdl-cell--2-col">
+        Program status
+      </div>
+      <div class="mdl-cell mdl-cell--3-col">
+        Member Enrollment Dates
+        <div class="mdl-grid">
+          <div class="mdl-cell--3-col wellness-table-enrollment-dates">
+            Effective Date
+          </div>
+          <div class="mdl-cell--3-col wellness-table-enrollment-dates">
+            Termination Date
+          </div>
+        </div>
+      </div>
+      <div class="mdl-cell mdl-cell--5-col">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--6-col">
+            Activity Description
+          </div>
+          <div class="mdl-cell mdl-cell--3-col">
+            Activity Date
+          </div>
+          <div class="mdl-cell mdl-cell--3-col">
+            Claim Number
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mdl-grid wellness-tb">
+    <div class="mdl-grid table-row" ng-repeat="program in wellnesstable.wellnesstableData.memberWellnessPrograms"
+         ng-class-even="'even-row'" ng-class-odd="'odd-row'">
+      <div class="mdl-cell mdl-cell--2-col">
+        {{program.wellPgmTxt||'- -'| camelCase| bracketUppercase}}
+      </div>
+      <div class="mdl-cell mdl-cell--2-col">
+        Active
+      </div>
+      <div class="mdl-cell mdl-cell--3-col wellness-table-enrollment-dates">
+        <div class="mdl-grid">
+          <div class="mdl-cell--3-col">
+            {{program.wellEnrlEffDt||'- -'| date : "MM.dd.y"}}
+          </div>
+          <div class="mdl-cell--3-col">
+            {{program.wellEnrlTermDt||'- -'| date : "MM.dd.y"}}
+          </div>
+        </div>
+      </div>
+      <div class="mdl-cell mdl-cell--5-col">
+        <div class="mdl-grid" ng-repeat="Activity in program.memberWellnessActivity">
+          <div class="mdl-cell mdl-cell--6-col">
+            {{Activity.wellActDescTxt||'- -'| camelCase}}
+          </div>
+          <div class="mdl-cell mdl-cell--3-col">
+            {{Activity.wellActComplDt||'- -'| date : "MM.dd.y"}} {{(Activity.wellActDescTxt.trim()| camelCase) ===
+            "Pregnancy Box" ? "(Mail Date)" : (Activity.wellActDescTxt.trim()| camelCase) === "Pregnancy Incentive" ?
+            "(Eligibility Date)" : ""}}
+          </div>
+          <div class="mdl-cell mdl-cell--3-col">
+            {{Activity.wellActClaimId||'- -'}}
+          </div>
+        </div>
+        <div class="mdl-grid" ng-hide="program.memberWellnessActivity.length">
+          <div class="mdl-cell mdl-cell--6-col">
+            - -
+          </div>
+          <div class="mdl-cell mdl-cell--3-col">
+            - -
+          </div>
+          <div class="mdl-cell mdl-cell--3-col">
+            - -
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="no-wellnessEvents" ng-hide="wellnesstable.wellnesstableData.memberWellnessPrograms.length">
+    {{wellnesstable.currentMemberFirstName | camelCase}} does not have any wellness activity in the last 3 years.
+  </div>
+</div>
+<i class="material-icons credit-card-icon pull-right wellness-card-toggle" ng-show="enrollment.hideWellnessCard"
+   ng-click="enrollment.wellnesscardtoggle();">credit_card</i>

@@ -1,0 +1,76 @@
+{
+  "privacyInfo": [
+    {
+      "memberID": 800100104,
+      "privacyType": "Authorized Person",
+      "effectiveDate": "2016-08-01T00:00:00.000-0400",
+      "terminationDate": "9999-12-31T00:00:00.000-0500",
+      "planCode": "804",
+      "originalAddedDate": "2016-08-01T00:00:00.000-0400",
+      "privacyAddress": {
+        "street1": "111 Main St",
+        "street2": "Apt 101",
+        "city": "Washington",
+        "state": "DC",
+        "zipCode": "999999999"
+      },
+      "privacyContactDetail": "1234567890",
+      "memberRepresentativeFirstName": "John",
+      "memberRepresentativeLastName": "Doe",
+      "privacyExplanation": "Authorized to access information"
+    },
+    {
+      "memberID": 800100104,
+      "privacyType": "Personal Representative",
+      "effectiveDate": "2016-08-01T00:00:00.000-0400",
+      "terminationDate": "9999-12-31T00:00:00.000-0500",
+      "planCode": "804",
+      "originalAddedDate": "2016-08-01T00:00:00.000-0400",
+      "privacyAddress": {
+        "street1": "555 Water St",
+        "street2": "Apt 501",
+        "city": "Fairfax",
+        "state": "VA",
+        "zipCode": "999999999",
+        "countryName": "GERMANY",
+        "countryCode": "276"
+      },
+      "privacyContactDetail": "9876543211",
+      "memberRepresentativeFirstName": "Jane",
+      "memberRepresentativeLastName": "Doe"
+    },
+    {
+      "memberID": 800100104,
+      "privacyType": "Amended PHI",
+      "effectiveDate": "2016-07-25T00:00:00.000-0400",
+      "terminationDate": "9999-12-31T00:00:00.000-0500",
+      "originalAddedDate": "0001-01-03T00:00:00.000-0500",
+      "privacyAddress": {},
+      "privacyReason": "AMENDED PHI RECORD ON FILE"
+    },
+    {
+      "memberID": 800100104,
+      "privacyType": "Agreed to Restriction",
+      "effectiveDate": "2016-06-20T00:00:00.000-0400",
+      "terminationDate": "2018-01-15T00:00:00.000-0500",
+      "originalAddedDate": "0001-01-03T00:00:00.000-0500",
+      "privacyAddress": {},
+      "privacyReason": "Test agreed to restriction"
+    },
+    {
+      "memberID": 800100104,
+      "privacyType": "Confidential Communication",
+      "effectiveDate": "2015-03-03T00:00:00.000-0500",
+      "terminationDate": "9999-12-31T00:00:00.000-0500",
+      "planCode": "423",
+      "originalAddedDate": "2015-08-19T00:00:00.000-0400",
+      "privacyAddress": {
+        "street1": "1250 MARYLAND AVE",
+        "city": "WASHINGTON",
+        "state": "DC",
+        "zipCode": "20024"
+      },
+      "privacyContactDetail": "0"
+    }
+  ]
+}

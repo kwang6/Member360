@@ -1,0 +1,29 @@
+{
+  "memberEligibilityInfo": [
+    {
+      "contractID": "44444444",
+      "memberID": 800091942,
+      "firstName": "KELLY",
+      "middleName": "E",
+      "lastName": "KIM",
+      "memberEnrollmentEffectiveDate": "2010-08-01T00:00:00.000-0400",
+      "patientCode": "B",
+      "memberType": "D",
+      "relationship": "S",
+      "suspiciousCode": " "
+    },
+    {
+      "contractID": "80060656",
+      "memberID": 800091942,
+      "firstName": "KELLY",
+      "middleName": "E",
+      "lastName": "KIM",
+      "memberEnrollmentEffectiveDate": "2010-08-01T00:00:00.000-0400",
+      "patientCode": "A",
+      "memberType": "C",
+      "relationship": "O",
+      "suspiciousCode": " ",
+      "memberEnrollmentTerminationDate": "2010-08-01T00:00:00.000-0400"
+    }
+  ]
+}

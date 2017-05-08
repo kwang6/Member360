@@ -1,0 +1,9 @@
+/**
+ * TODO
+ * Mock Data for DashboardService
+ */
+{
+  "one": "Dashboard",
+  "two": "Enrollment",
+  "three": "Claims"
+}

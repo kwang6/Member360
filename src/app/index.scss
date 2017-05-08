@@ -1,0 +1,571 @@
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,400,500,700);
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.eot');
+  /* For IE6-8 */
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url('../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff2') format('woff2'), url('../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff') format('woff'), url('../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+/* color swatches */
+$orange: #FF6717;
+$blue-dark: #2e7799;
+$blue-black: #082a3a;
+$sky-blue: #47a4ea;
+$blue-grey: #6A7686;
+$mid-grey: #9A9DA4;
+$light-grey: #DFE1E2;
+$header-grey: #e9e9e9;
+$white: #FFFFFF;
+$black: #000000;
+$dark-red: #de3226;
+$dark-purple: #222430;
+$purple-grey: #2D3A48;
+$bright-green: #A2CA46;
+$muted-green: #B5D07A;
+$dark-green: #70ba4a;
+$muted-purple: #45536b;
+$brand: #14C5DA;
+$brand-alpha: rgba(20, 197, 218, 0.5);
+$bright-highlight: #CA4670;
+/* global treatments */
+$data-bottom: 1px dotted #e9e9e9;
+$data-padding: 2px 0;
+$data-width: 95%;
+$card-muted-bg: rgba(69, 83, 107, 0.18);
+$dark-bg-hover: #b5cbe3;
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+body {
+  font-family: 'Roboto', 'Helvetica Neue';
+  height: 100%;
+  max-height: 100%;
+  background: $white;
+  ui-view {
+    height: 100%;
+    background: $white;
+    max-height: 100%;
+    min-height: 100%;
+  }
+}
+
+main {
+  padding: 20px;
+  background: #cecece;
+}
+
+.pull-left {
+  float: left !important;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.acme-card-wide {
+  &.mdl-card {
+    width: 100%;
+  }
+  > .mdl-card__title {
+    color: #fff;
+    height: 176px;
+    background-size: 110px;
+    background-repeat: no-repeat;
+  }
+  > .mdl-card__title > .mdl-card__title-text {
+    color: #000;
+  }
+  > .mdl-card__menu {
+    color: #000;
+  }
+  > .mdl-card__actions {
+    text-align: center;
+  }
+}
+
+.acme-card-square {
+  &.mdl-card {
+    width: 100%;
+    min-height: 200px;
+  }
+  > .mdl-card__title {
+    color: #60ba5e;
+    font-weight: 600;
+  }
+  > .mdl-card__media {
+    color: #fff;
+    text-align: center;
+    img {
+      height: 100px;
+    }
+  }
+}
+
+.demo-card-wide.mdl-card {
+  width: 100%;
+  border-radius: 0;
+}
+
+.demo-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+}
+
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+
+.mdl-layout__header {
+  z-index: 9999;
+  top: 73px;
+  position: fixed;
+  height: 53px;
+  min-height: 53px;
+}
+
+.fepheader {
+  background-color: white;
+  .bcbs {
+    position: relative;
+    z-index: 2;
+  }
+  .fepdirect {
+    position: relative;
+    margin-top: 10px;
+    z-index: 2;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  div {
+    background-color: #1e8ac7;
+    padding-right: 2200;
+    position: relative;
+    top: -63px;
+    padding-top: 53px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 100%;
+    background: #1e8ac7;
+    background: -webkit-linear-gradient(#3da1d5, #0276b0);
+    background: -o-linear-gradient(#3da1d5, #0276b0);
+    background: -moz-linear-gradient(#3da1d5, #0276b0);
+    background: linear-gradient(#3da1d5, #0276b0);
+  }
+}
+
+.mdl-layout__header-row {
+  height: 53px;
+}
+
+.mdl-layout-title {
+  color: #333;
+  font-size: 26px;
+  font-weight: 300;
+  position: relative;
+  left: 0px;
+}
+
+.mdl-navigation__link {
+  color: #fff;
+}
+
+.mdl-navigation {
+  padding-top: 0;
+  background: rgb(150, 149, 151);
+}
+
+.brand-span {
+  color: #70ba4a;
+}
+
+.mdl-layout {
+  background: rgb(150, 149, 151);
+}
+
+.mdl-layout__content {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #969597;
+  left: 53px;
+  position: fixed;
+  .page-content {
+    top: 53px;
+    height: 100%;
+    background: $white;
+    position: relative;
+  }
+}
+
+/**
+ * Mataterial Tabs
+ */
+.mdl-tabs__tab-bar {
+  justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  background-color: $muted-purple;
+  height: 48px;
+  padding-top: 5px;
+  border-bottom: 0px;
+}
+
+.mdl-tabs.is-upgraded .mdl-tabs__tab.is-active::after {
+  background: $bright-green;
+  height: 4px;
+}
+
+.mdl-tabs__tab {
+  color: #9d9da5;
+  font-weight: 100;
+  &:hover {
+    color: $dark-bg-hover;
+  }
+}
+
+.mdl-textfield__label:after {
+  bottom: 15px;
+}
+
+[role="button"] {
+  cursor: default;
+}
+
+.mdl-tabs .mdl-tabs__tab {
+  height: 48px;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 0 30px;
+}
+
+.mdl-tabs.is-upgraded .mdl-tabs__tab.is-active {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 100;
+}
+
+.mdl-tabs__panel {
+  &.activities,
+  &.wellness {
+    padding: 0px;
+  }
+  &.enrollment {
+    padding: 30px 30px 60px;
+    background: $card-muted-bg;
+  }
+  h5 {
+    font-size: 16px;
+    color: $sky-blue;
+    margin: 0 0 5px;
+    font-weight: 400;
+  }
+  ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    font-size: 14px;
+    &.primary {
+      h5 {
+        color: $sky-blue;
+      }
+    }
+    &.contact {
+      i {
+        font-size: 16px;
+        top: 2px;
+        position: relative;
+        left: 2px;
+        color: lighten($muted-purple, 20%);
+      }
+      li {
+        border-bottom: $data-bottom;
+        padding: $data-padding;
+        width: $data-width;
+      }
+    }
+    &.member {
+      li {
+        border-bottom: $data-bottom;
+        padding: $data-padding;
+        width: $data-width;
+      }
+    }
+    &.icon {
+      h5 {
+        i {
+          font-size: 17px;
+          top: 2px;
+          position: relative;
+          left: 4px;
+          color: lighten($sky-blue, 13%);
+        }
+      }
+      li {
+        border-bottom: $data-bottom;
+        padding: $data-padding;
+        width: $data-width;
+        &.primary {
+          label {
+            color: $dark-purple;
+            font-weight: 400;
+            width: 50%;
+          }
+        }
+      }
+    }
+    li {
+      line-height: 22px;
+      &.primary {
+        line-height: 22px;
+      }
+      label {
+        font-weight: 400;
+        min-width: 36%;
+        display: inline-block;
+        &:after {
+          content: ':';
+          padding-left: 1.5px;
+        }
+      }
+      span {
+        margin-left: 0;
+        font-weight: 100;
+        /*color: darken($mid-grey, 20%);*/
+        color: $black;
+        &.primary {
+          margin-left: 0;
+        }
+        .modifier {
+          font-weight: 400;
+          color: $muted-purple;
+          margin-left: 3px;
+          i {
+            font-size: 16px;
+            top: 2px;
+            position: relative;
+            left: 2px;
+            color: lighten($muted-purple, 20%);
+          }
+        }
+      }
+    }
+  }
+}
+
+.mdl-data-table {
+  width: 100%;
+  border-radius: 0;
+  tbody {
+    tr {
+      &:hover {
+        background-color: #33374B;
+        color: $bright-green;
+        td {
+          color: $bright-green;
+          font-weight: 400;
+        }
+      }
+      td {
+        color: $black;
+        font-weight: 300;
+        font-size: 14px;
+      }
+    }
+  }
+  &.roster-wrapper {
+    width: 100%;
+    &.mdl-data-table {
+      &.roster-data {
+        width: 100%;
+        border-radius: 0;
+        thead {
+          th {
+            font-size: 14px;
+            font-weight: 400;
+            color: #000;
+          }
+        }
+        tbody {
+          tr {
+            &:hover {
+              background: #000;
+              td {
+                color: #9A9DA4;
+              }
+            }
+            td {
+              color: $mid-grey;
+              font-weight: 300;
+            }
+          }
+        }
+      }
+    }
+  }
+  border-radius: 4px;
+  thead {
+    th {
+      font-size: 14px;
+      font-weight: 400;
+      color: #000;
+    }
+  }
+  tbody {
+    td {
+      color: $mid-grey;
+      font-weight: 300;
+    }
+  }
+}
+
+.mdl-grid {
+  padding: 0;
+}
+
+.tooltip.customClass .tooltip-inner {
+  width: 370px;
+  max-width: 370px;
+  text-align: left;
+  background-color: #FF6600;
+  background-color: $white;
+  color: $black;
+  box-shadow: 2px 2px 3px 4px $card-muted-bg;
+  span.ng-binding {
+    color: $black;
+  }
+}
+
+.tooltip.customClass .tooltip-arrow {
+  border-bottom-color: #FF6600;
+}
+
+* {
+  box-sizing: content-box;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+h2 {
+  line-height: 3;
+}
+
+/**
+ * Breadcrumb SCSS component styles
+ * Author: John V. Runion
+ */
+.navigation-scope {
+  position: fixed;
+  top: 127px;
+  min-height: 53px;
+  width: 100%;
+  background: $dark-purple;
+  color: $white;
+  left: 53px;
+  font-size: 16px;
+  font-weight: 300;
+  z-index: 99;
+  max-height: 53px;
+  .mdl-grid {
+    margin: 0;
+    padding: 0;
+    .mdl-cell {
+      i.material-icons {
+        top: 6px;
+        position: relative;
+        left: -1px;
+        opacity: 0.25;
+        &.group {
+          color: lighten($bright-green, 10%);
+        }
+        &.result {
+          color: lighten($bright-green, 10%);
+          opacity: 1.0;
+        }
+        &.trigger {
+          &:hover {
+            color: lighten($bright-green, 10%);
+            opacity: 1.0;
+            cursor: pointer;
+          }
+        }
+      }
+      div {
+        display: inline-block;
+        height: 34px;
+        padding: 19px 30px 0;
+
+        &.breadcrumb {
+          background: $purple-grey;
+          box-shadow: inset 0 5px 10px 0 RGBA(0, 0, 0, 0.33);
+          color: $bright-green;
+          font-size: 16px;
+          font-weight: 100;
+          text-transform: uppercase;
+        }
+        &.search-context {
+          color: lighten($muted-purple, 80%);
+          padding: 19px 5px 0 20px;
+        }
+        &.search-result {
+          padding: 19px 5px 0 15px;
+          font-weight: 400;
+          color: $white;
+        }
+        &.search-criteria {
+          color: $sky-blue;
+          //color: lighten($muted-purple, 40%);
+          padding: 19px 5px 0;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+
+/**
+ *  Do not remove the comment below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector

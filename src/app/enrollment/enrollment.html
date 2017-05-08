@@ -1,0 +1,503 @@
+<div ng-controller="EnrollmentController as enrollment">
+  <div class="navigation-scope" ng-controller="BreadcrumbController as breadcrumb">
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--11-col mdl-cell--11-col-tablet breadcrumb-wrapper">
+        <div class="breadcrumb">{{breadcrumb.breadCrumb}}</div>
+        <div class="search-context">R{{enrollment.contractSummary.contractID||'ContractID' | prependZeroFixedLen:8}}
+        </div>
+        <i class="material-icons">chevron_right</i>
+        <div class="search-criteria">{{enrollment.role ||'CONTRACT HOLDER'}}</div>
+        <i class="material-icons">chevron_right</i>
+        <i class="material-icons result">person</i>
+        <div class="search-result">{{enrollment.selectedMember.firstName||'Name'| camelCase }}
+          {{enrollment.selectedMember.middleName| camelCase}}
+          {{enrollment.selectedMember.lastName| camelCase}}
+        </div>
+        <i class="material-icons">chevron_right</i>
+        <i class="material-icons result cursor" ng-show="enrollment.members.length>1">people</i>
+        <div class="search-context cursor" ng-show="enrollment.members.length>1"
+             ng-click="enrollment.handleRosterClick();enrollment.hideNotification($event)">
+          VIEW MEMBER ROSTER
+        </div>
+        <i class="material-icons result cursor" ng-show="enrollment.members.length>1"
+           ng-click="enrollment.handleRosterClick();enrollment.hideNotification($event)">{{enrollment.arrowIcon}}</i>
+      </div>
+      <notification-messages></notification-messages>
+    </div>
+    <div class="member-roster" ng-show="enrollment.rosterPanelShowed && enrollment.members.length>1"
+         ng-click='$event.stopPropagation();'>
+      <table class="mdl-data-table mdl-shadow--2dp">
+        <thead>
+        <tr>
+          <th class="width-adjust5">Member ID</th>
+          <th class="width-adjust5">Privacy</th>
+          <th class="width-adjust15">First Name</th>
+          <th class="width-adjust5">Middle Initial</th>
+          <th class="width-adjust15">Last Name</th>
+          <th class="width-adjust5">DOB</th>
+          <th class="width-adjust5">Gender</th>
+          <th class="width-adjust10">Member Type</th>
+          <th class="width-adjust10">Relationship</th>
+          <!--<th class="mdl-data-table__cell&#45;&#45;non-numeric fullwidth"></th>-->
+        </tr>
+        </thead>
+        <tbody class="mdl-data-table mdl-shadow--2dp">
+        <tr class="cursor" ng-repeat="member in enrollment.members"
+            ng-click='enrollment.setSelectedMember(member); enrollment.handleRosterClick()'>
+          <td class="width-adjust5">{{member.memberID||'- -'}}</td>
+          <td class="width-adjust5">
+            <i class="red-lock material-icons result is-privacy-right" ng-show="member.hasPrivacy">lock</i>
+            <span ng-hide="member.hasPrivacy">- -</span>
+          </td>
+          <td class="width-adjust15">{{member.firstName||'- -'| camelCase}}</td>
+          <td class="width-adjust5">{{member.middleName||'- -'| camelCase}}</td>
+          <td class="width-adjust15">{{member.lastName||'- -'| camelCase}}</td>
+          <td class="width-adjust5">{{member.dateOfBirth||'- -'| date : "MM.dd.y" }}</td>
+          <td class="width-adjust5">{{member.gender||'- -'}}</td>
+          <td class="width-adjust10">{{member.memberType||'- -'|memberTypeDescription}}</td>
+          <td class="width-adjust10">
+            {{member.relationship||'- -'|relationshipDescription}}
+            <!-- <i class="material-icons result" ng-class="{'blue': member.relationship == 'O' }">person</i> -->
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <main class="mdl-layout__content">
+    <privacy-flag></privacy-flag>
+    <div class="page-content">
+      <!--up member Info section-->
+      <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+        <!--up member Info tabs one-->
+        <div class="mdl-tabs mdl-js-tabs">
+          <!--tabs one name-->
+          <div class="mdl-tabs__tab-bar">
+            <a href="#contract" class="mdl-tabs__tab is-active">{{enrollment.role ||'CONTRACT HOLDER'}}
+              Information</a>
+          </div>
+          <!--tabs panel one-->
+          <div class="mdl-tabs__panel is-active" id="contract">
+            <!--put the tab panel into the grid system-->
+            <div class="mdl-grid">
+              <!--left section in panel one-->
+              <div class="mdl-cell mdl-cell--6-col mdl-cell--9-col-tablet contact">
+                <div class="mdl-grid">
+                  <div class="mdl-cell mdl-cell--5-col">
+                    <ul class="demo-list-item mdl-list icon" style="padding-bottom: 40px;">
+                      <h5>Verification Data<i class="material-icons">verified_user</i>
+                      </h5>
+                      <li class="mdl-list__item primary">
+                        <label>Date of Birth</label>
+                        <span class="mdl-list__item-primary-content primary">
+                          {{enrollment.selectedMember.dateOfBirth ||'- -'| date: "MM.dd.y" }}
+                        </span>
+                      </li>
+                      <li class="mdl-list__item primary">
+                        <label>SSN</label>
+                        <span class="mdl-list__item-primary-content primary">
+                          {{enrollment.selectedMember.ssn ||'- -'| ssn}}
+                        </span>
+                      </li>
+
+                    </ul>
+                    <ul class="demo-list-item mdl-list icon">
+                      <h5>Member Contact<i class="material-icons">call</i>
+                      </h5>
+                      <li class="mdl-list__item">
+                        <label>Preferred</label>
+                        <span class="mdl-list__item-primary-content">
+                          {{enrollment.getMemberContactNumber('N').detail || '- -'| prependZeroFixedLen:10 |tel }}
+                        </span>
+                      </li>
+                      <li class="mdl-list__item">
+                        <label>Home</label>
+                        <span class="mdl-list__item-primary-content">
+                          {{enrollment.getMemberContactNumber('H').detail || '- -'| prependZeroFixedLen:10 | tel }}
+                        </span>
+                      </li>
+                      <li class="mdl-list__item">
+                        <label>Work</label>
+                        <span class="mdl-list__item-primary-content">
+                          {{enrollment.getMemberContactNumber('W').detail || '- -'| prependZeroFixedLen:10 | tel }}
+                        </span>
+                      </li>
+                      <li class="mdl-list__item">
+                        <label>Mobile</label>
+                        <span class="mdl-list__item-primary-content">
+                          {{enrollment.getMemberContactNumber('M').detail || '- -'| prependZeroFixedLen:10 | tel }}
+                        </span>
+                      </li>
+                      <li class="mdl-list__item emailSpecial">
+                        <label>Email</label>
+                        <span class="mdl-list__item-primary-content pull-right">
+                          {{enrollment.getMemberContactNumber('E').detail || '- -'| prependZeroFixedLen:10 | tel }}
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="mdl-cell mdl-cell--7-col">
+                    <ul class="demo-list-item mdl-list">
+                      <h5>Member Profile</h5>
+                      <li class="mdl-list__item primary">
+                        <label>Nick Name</label>
+                        <span class="mdl-list__item-primary-content">
+                          {{enrollment.selectedMember.nickName || '- -'}}
+                        </span>
+                      </li>
+                      <li class="mdl-list__item primary">
+                        <label>Gender</label>
+                        <span class="mdl-list__item-primary-content">
+                          {{enrollment.selectedMember.gender}}
+                        </span>
+                      </li>
+                      <li class="mdl-list__item">
+                        <label>Relationship</label>
+                        <span class="mdl-list__item-primary-content">
+                          {{enrollment.selectedMember.relationship || '- -'|relationshipDescription}}
+                        </span>
+                      </li>
+                      <li class="mdl-list__item">
+                        <label>Member ID</label>
+                        <span class="mdl-list__item-primary-content">
+                          {{enrollment.selectedMember.memberID || '- -'}}
+                        </span>
+                      </li>
+                      <li class="mdl-list__item">
+                        <label>Individual Tax Identification Number</label>
+                        <span class="mdl-list__item-primary-content">
+                          {{enrollment.selectedMember.itin||'- -'|ssn}}
+                        </span>
+                      </li>
+                      <li class="mdl-list__item">
+                        <label>Termination Code</label>
+                        <span class="mdl-list__item-primary-content">
+                          {{enrollment.selectedMember.terminationCode ||'- -'}}
+                        </span>
+                      </li>
+                      <li class="mdl-list__item">
+                        <label>Enrollment Effective Code</label>
+                        <span class="mdl-list__item-primary-content">
+                          {{enrollment.selectedMember.effectiveCode ||'- -'}}
+                        </span>
+                      </li>
+                      <li class="mdl-list__item">
+                        <label>Enrollment Effective Date</label>
+                        <span class="mdl-list__item-primary-content">
+                          {{enrollment.selectedMember.memberEnrollmentEffectiveDate ||'- -'|date: "MM.dd.y"}}
+                        </span>
+                      </li>
+                      <li class="mdl-list__item" id="enrollment_termination_date">
+                        <label>Enrollment Termination Date</label>
+                        <span class="mdl-list__item-primary-content">
+                          {{enrollment.selectedMember.memberEnrollmentTerminationDate ||'- -'|date: "MM.dd.y"}}
+                        </span>
+                      </li>
+                      <li class="mdl-list__item">
+                        <label>MyBlue</label>
+                        <span ng-class="{myblueNotRegisted : enrollment.isMyBlueRegisteredUser ==='Not Registered'}"
+                              class="mdl-list__item-primary-content myblue">
+                          {{enrollment.isMyBlueRegisteredUser}}
+                          <i class="material-icons">{{enrollment.checkIcon}}</i>
+                        </span>
+                      </li>
+                    </ul>
+                    <ul class="demo-list-item mdl-list primary icon">
+                      <h5>Member Address<i class="material-icons">store</i>
+                      </h5>
+                      <li class="mdl-list__item primary">
+                        <span class="mdl-list__item-primary-content primary">
+                          {{enrollment.memberAddress.street1|| '- -' | camelCase}}
+                          {{enrollment.memberAddress.street2 | camelCase}}<br>
+                          {{enrollment.memberAddress.city | camelCase}}
+                          {{enrollment.memberAddress.state}}
+                          {{enrollment.memberAddress.zipCode | zipcode}}<br>
+                          {{enrollment.memberAddress.countryName | camelCase}}
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!--right section in panel one-->
+
+              <div class="mdl-cell mdl-cell--6-col mdl-cell--7-col-tablet">
+                <div class="mdl-grid">
+                  <div class="mdl-cell mdl-cell--12-col">
+                    <h5 class="summary">CONTRACT SUMMARY</h5>
+                  </div>
+                </div>
+                <div class="mdl-grid">
+                  <div class="mdl-cell mdl-cell--7-col">
+                    <ul class="demo-list-item mdl-list details icon">
+                      <h5>Contract Details<i class="material-icons">call</i>
+                      </h5>
+                      <li class="mdl-list__item">
+                        <label>Home</label>
+                        <span class="mdl-list__item-primary-content">
+                          {{enrollment.getContractHomeNumber().detail || '- -'| prependZeroFixedLen:10 | tel }}
+                        </span>
+                      </li>
+                      <li class="mdl-list__item">
+                        <label>Work</label>
+                        <span class="mdl-list__item-primary-content">
+                          {{enrollment.getContractNumber('W').detail || '- -'| prependZeroFixedLen:10 | tel }}
+                        </span>
+                      </li>
+                    </ul>
+                    <ul class="demo-list-item mdl-list icon primary">
+                      <h5>Contract Information<i class="material-icons">assignment</i>
+                      </h5>
+                      <li class="mdl-list__item">
+                        <label>Civil Service Annuity/Civil Service Final #</label>
+                        <span class="mdl-list__item-primary-content">
+                          {{enrollment.getContractHolder().csaCsfNumber|| '- -'}}
+                        </span>
+                      </li>
+                      <li class="mdl-list__item">
+                        <label>Plan Code</label>
+                        <span ng-repeat="planInfo in enrollment.planInfo"
+                              uib-tooltip-template="'myTooltipTemplate.html'" tooltip-placement="bottom"
+                              tooltip-class="customClass" class="mdl-list__item-primary-content" id="planCode">
+                          {{planInfo.planCode||'- -'}}{{$last ? '' : ', '}}
+                        </span>
+
+                        <script type="text/ng-template" id="myTooltipTemplate.html">
+
+                          <ul class="tooltip-panel">
+                            <li class="tooltip-li">
+                              <label>Plan Code</label>
+                              <span>
+                                {{planInfo.planCode}}
+                              </span>
+                            </li>
+                            <li class="tooltip-li planName">
+                              <label>Plan Name</label>
+                              <span>
+                                {{planInfo.planName}}
+                              </span>
+                            </li>
+                            <li class="tooltip-li" ng-repeat="planPhoneInfo in planInfo.planPhoneInfo"
+                                ng-show="(planPhoneInfo.planContactType == 'CL')||(planPhoneInfo.planContactType == 'CT')">
+                              <label>Plan Contact Type</label>
+                              <span>
+                                {{planPhoneInfo.planContactType | planPhoneTypeDescription}}
+                              </span>
+                              </br>
+                              <label>Plan Contact Number</label>
+                              <span>
+                                {{planPhoneInfo.planContactNbr||'- -'| prependZeroFixedLen:10 |tel}}
+                              </span>
+                            </li>
+                          </ul>
+                        </script>
+
+                      </li>
+                      <li class="mdl-list__item"
+                          ng-show="(enrollment.contractSummary.enrollmentInfo.transactionCode == '80')||(enrollment.contractSummary.enrollmentInfo.transactionCode == '90')">
+                        <label>Transaction Code</label>
+                        <span class="mdl-list__item-primary-content">
+                        {{enrollment.contractSummary.enrollmentInfo.transactionCode}}
+                      </span>
+                      </li>
+                      <li class="mdl-list__item"
+                          ng-show="(enrollment.contractSummary.enrollmentInfo.transactionCode == '80')||(enrollment.contractSummary.enrollmentInfo.transactionCode == '90')">
+                        <label>Event Code</label>
+                        <span class="mdl-list__item-primary-content">
+                        {{enrollment.contractSummary.enrollmentInfo.eventCode}}
+                      </span>
+                      </li>
+                      <li class="mdl-list__item"
+                          ng-show="(enrollment.contractSummary.enrollmentInfo.transactionCode == '80')||(enrollment.contractSummary.enrollmentInfo.transactionCode == '90')">
+                        <label>Transaction Effective Date</label>
+                        <span class="mdl-list__item-primary-content">
+                        {{enrollment.contractSummary.enrollmentInfo.effectiveDate||'- -'| date: "MM.dd.y"}}
+                      </span>
+                      </li>
+                      <li class="mdl-list__item"
+                          ng-show="(enrollment.contractSummary.enrollmentInfo.transactionCode == '80')||(enrollment.contractSummary.enrollmentInfo.transactionCode == '90')">
+                        <label>Transaction Processed Date</label>
+                        <span class="mdl-list__item-primary-content">
+                        {{enrollment.contractSummary.enrollmentInfo.lastProcDate||'- -'| date: "MM.dd.y"}}
+                      </span>
+                      </li>
+                    </ul>
+
+                    <ul class="demo-list-item mdl-list icon">
+                      <li class="mdl-list__item">
+                        <h5 class="FSA-label">Flexible Savings Account</h5>
+                        <span ng-hide="enrollment.currentFsaEligibility" class="FSA-notenrolled">Not Enrolled</span>
+                      </li>
+                      <li class="mdl-list__item" ng-show="enrollment.hasFsaEligibilityHistory">
+                      	<span class="myblue FSA-button" ng-click="showFSA()">
+                        <i class="material-icons FSA-history-zoomin">zoom_in</i>Historical Data</span>
+                      </li>
+                      <li class="mdl-list__item" ng-show="enrollment.currentFsaEligibility">
+                        <label>Effective Date</label>
+                        <span class="mdl-list__item-primary-content">
+                        {{enrollment.currentFsaEligibility.fsaEffectiveDate||'- -'| date: "MM.dd.y"}}
+                      </span>
+                      </li>
+                      <li class="mdl-list__item" ng-show="enrollment.currentFsaEligibility">
+                        <label>Termination Date</label>
+                        <span class="mdl-list__item-primary-content">
+                        {{enrollment.currentFsaEligibility.fsaTerminationDate||'- -'| date: "MM.dd.y"}}
+                      </span>
+                      </li>
+                      <li class="mdl-list__item" ng-show="enrollment.currentFsaEligibility">
+                        <label>Closeout Date</label>
+                        <span class="mdl-list__item-primary-content">
+                        {{enrollment.currentFsaEligibility.fsaCloseOutDate||'- -'| date: "MM.dd.y"}}
+                      </span>
+                      </li>
+                    </ul>
+
+                    <script type="text/ng-template" id="myModalContent.html">
+                      <div class="modal-header">
+                        <h5>Flexible Savings Account</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">
+                          x
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="mdl-grid FSA-table">
+                          <div class="mdl-grid FSA-th">
+                            <div class="mdl-grid table-row">
+                              <div class="mdl-cell mdl-cell--4-col">
+                                Effective Date
+                              </div>
+                              <div class="mdl-cell mdl-cell--4-col">
+                                Termination Date
+                              </div>
+                              <div class="mdl-cell mdl-cell--4-col">
+                                Closeout Date
+                              </div>
+                            </div>
+                          </div>
+                          <div class="mdl-grid FSA-tb">
+                            <div class="mdl-grid table-row" ng-repeat="FSADate in FSAHistory"
+                                 ng-class="{'font-bold': FSADate.firstline  == true}">
+                              <div class="mdl-cell mdl-cell--4-col">
+                                {{FSADate.fsaEffectiveDate||'- -'| date: "MM.dd.y"}}
+                              </div>
+                              <div class="mdl-cell mdl-cell--4-col">
+                                {{FSADate.fsaTerminationDate||'- -'| date: "MM.dd.y"}}
+                              </div>
+                              <div class="mdl-cell mdl-cell--4-col">
+                                {{FSADate.fsaCloseOutDate||'- -'| date: "MM.dd.y"}}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect blue-button" type="button"
+                                ng-click="cancel()">Close
+                        </button>
+                      </div>
+                    </script>
+
+                  </div>
+                  <div class="mdl-cell mdl-cell--5-col">
+                    <ul class="demo-list-item mdl-list primary icon">
+                      <h5>Primary Address<i class="material-icons">store</i>
+                      </h5>
+                      <li class="mdl-list__item">
+                      <span class="mdl-list__item-primary-content">
+                        {{enrollment.primaryAddress.street1|| '- -' | camelCase}}
+                        {{enrollment.primaryAddress.street2 | camelCase}}<br>
+                        {{enrollment.primaryAddress.city | camelCase}}
+                        {{enrollment.primaryAddress.state}}
+                        {{enrollment.primaryAddress.zipCode | zipcode}}<br>
+                        {{enrollment.primaryAddress.countryName | camelCase}}
+                      </span>
+                      </li>
+                    </ul>
+                    <ul class="demo-list-item mdl-list alternate icon">
+                      <h5>Alternate Address<i class="material-icons">store</i></h5>
+                      <li class="mdl-list__item" ng-show="enrollment.alternateAddress">
+                      <span class="mdl-list__item-primary-content">
+                        <label class="text-color-orange">Effective Dates</label><br>
+                        <span class="is-alternate-dates">
+                          {{enrollment.alternateAddress.alternateBeginMonthYear | alternateMonthYear}}
+                          -
+                          {{enrollment.alternateAddress.alternateEndMonthYear | alternateMonthYear}}
+                        </span>
+                      </span>
+                      </li>
+                      <li class="mdl-list__item">
+                      <span class="mdl-list__item-primary-content">
+                        {{enrollment.alternateAddress.street1|| '- -' | camelCase}}
+                        {{enrollment.alternateAddress.street2 | camelCase}}<br>
+                        {{enrollment.alternateAddress.city | camelCase}}
+                        {{enrollment.alternateAddress.state}}
+                        {{enrollment.alternateAddress.zipCode | zipcode}}<br>
+                        {{enrollment.alternateAddress.countryName | camelCase}}
+                      </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-card-wide mdl-card mdl-shadow--2dp activity-options">
+        <!--lower event info section -->
+        <div class="mdl-tabs mdl-js-tabs">
+          <!--tabs in lower card section-->
+          <div class="mdl-tabs__tab-bar">
+            <!--tab bar names-->
+            <a href="#events" class="mdl-tabs__tab is-active" id="eventsTab">Contract Events</a>
+            <a href="#wellness" class="mdl-tabs__tab" ng-click="enrollment.getWellnessData()" id="wellnessTab">Health &
+              Wellness</a>
+          </div>
+          <!--tab bar panels for event-->
+          <div class="mdl-tabs__panel enrollment activities is-active" id="events">
+            <div class="mdl-grid">
+              <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet">
+                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp fullwidth">
+                  <thead>
+                  <tr>
+                    <th class=" fullwidth">Enrollment Status</th>
+                    <th class="fullwidth">Enrollment Code</th>
+                    <th class="fullwidth">Trans Code</th>
+                    <th class="fullwidth">Event Code</th>
+                    <th class="fullwidth">Employment Status</th>
+                    <th class="fullwidth">Enrollment Effective Date</th>
+                    <th class="fullwidth">Processed Date</th>
+                    <th class="fullwidth">New/Prev Carrier</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr ng-repeat="contractEvent in enrollment.contractEvents">
+                    <td class="">{{contractEvent.enrollmentStatus|| '- -'}}</td>
+                    <td>{{contractEvent.enrollmentCode|| '- -'}}</td>
+                    <td>{{contractEvent.transactionCode|| '- -'}}</td>
+                    <td>{{contractEvent.eventCode|| '- -'}}</td>
+                    <td>{{contractEvent.employeeStatus|| '- -'}}</td>
+                    <td>{{contractEvent.effectiveDate|| '- -' | date : "MM.dd.y" }}</td>
+                    <td>{{contractEvent.lastProcDate|| '- -' | date : "MM.dd.y" }}</td>
+                    <td>{{contractEvent.prevGainCarrier.trim() || '- -'}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- tab bar panels for wellness-->
+          <div class="mdl-tabs__panel wellness" id="wellness">
+            <div class="mdl-grid">
+              <wellnesstable-info class="mdl-cell mdl-cell--10-col"
+                                  ng-class="{'mdl-cell--12-col': enrollment.hideWellnessCard == true}"></wellnesstable-info>
+              <wellnesscard-info class="mdl-cell mdl-cell--2-col wellness-card"
+                                 ng-hide="enrollment.hideWellnessCard"></wellnesscard-info>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
